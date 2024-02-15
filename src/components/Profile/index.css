@@ -1,0 +1,88 @@
+.profile-main{
+    height: 80vh;
+    padding: 15px;
+}
+.profile-user{
+    display: flex;
+}
+
+.profile-details{
+    padding-left: 15px;
+}
+.profile-image{
+    height: 150px;
+}
+.profile-name{
+    margin-top: 10px;
+    font-size: 30px;
+    font-family: "Roboto";
+    font-weight: 500;
+    margin-bottom: 0px;
+
+}
+
+.profile-success{
+    overflow-y: scroll;
+    height: 50vh;
+}
+.post-head{
+    margin: 0px;
+    padding-top: 10px;
+    font-size: 20px;
+    font-weight: 500;
+}
+.post-main{
+    padding: 5px;
+}
+.ko{
+    border : none;
+}
+.border-white{
+    border-color: #afafa4 !important;
+}
+.active{
+    border-style: solid !important;
+    border-width: 2px !important;
+    border-left: none !important;
+    border-top: none !important;
+    border-right: none !important;
+}
+.no-profile-button{
+    outline: none;
+    border: none;
+    background: transparent;
+    text-align: center;
+    width: 30vw;
+}
+.icons{
+    margin-top: 10px;
+}
+.profile-bio{
+    margin-top: 10px;
+    font-size: 14px;
+}
+.success-imgs{
+    height: 200px;
+    width : 85vw;
+}
+
+@media(min-width:768px){
+    .profile-user{
+        margin-bottom: 30px;
+    }
+    .profile-name{
+        font-size: 40px;
+    }
+    .profile-bio{
+        margin-top: 10px;
+        font-size: 20px;
+    }
+    .profile-success{
+        overflow-y: scroll;
+        height: 60vh;
+    }
+    .success-imgs{
+        height: 200px;
+        width : 43vw;
+    }
+}

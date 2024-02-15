@@ -1,0 +1,117 @@
+.home-main{
+    height: 100%;
+    width : 100vw;
+}
+.bg0{
+    background-color: #C2DEDC;
+}
+.bg1{
+    background-color: #D7E4C0;
+}
+.bg2{
+    background-color: #FFF7F1;
+}
+.bg3{
+    background-color: #E1F0DA;
+}
+.bg4{
+    background-color: #92C7CF;
+}
+.bg5{
+    background-color: #F6D6D6;
+}
+.bg6{
+    background-color: #DED0B6;
+}
+.bg7{
+    background-color: #89CFF3;
+}
+.bg8{
+    background-color: #9BABB8;
+}
+.bg9{
+    background-color: #F1F7B5;
+}
+.card-foot{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.card-sub{
+    display: flex;
+    align-items: center;
+}
+.like-text{
+    font-size: 18px;
+    margin: 0px;
+    padding: 10px;
+}
+.like-button{
+    outline: none;
+    border: none;
+    background: transparent;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+ul{
+    padding: 0px;
+
+}
+.no-style-link{
+    text-decoration: none;
+}
+.loader-dark{
+    background-color: #0f0606;
+}
+.success-dark{
+    background-color: #0f0606;
+    color :white
+}
+.success-head{
+    font-weight: 700;
+    font-size: 24px;
+    font-style: italic;
+}
+.loader{
+    height : 80vh;
+    width : 100vw;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.li{
+    color :#0f0606;
+    border-radius: 5px;
+    margin-bottom: 15px;
+    box-shadow: 0 0 6px 0 rgba(121,121,121,0.3);
+    list-style-type: none;
+    padding: 10px;
+}
+.success-heading{
+    margin: 0px;
+}
+.success-img{
+    height: 200px;
+    width : 87vw;
+}
+.success{
+    padding: 15px;
+    overflow-y: scroll;
+    height: 79vh;
+}
+
+@media (min-width : 767px){
+    .ul{
+        display: flex;
+        flex-wrap: wrap;
+    }
+    .li{
+        width: 43vw;
+        margin-right: 15px;
+    }
+    .success-img{
+        height: 200px;
+        width : 43vw;
+    }
+}

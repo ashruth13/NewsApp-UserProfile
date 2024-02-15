@@ -1,0 +1,33 @@
+.settings-main{
+    height: 80vh;
+    padding: 10px;
+}
+.settings-head{
+    margin: 0px;
+    font-size: 32px;
+    font-family: "Roboto";
+    font-weight: 500;
+}
+.settings-ul{
+    padding: 0px;
+}
+.settings-dark{
+    color :white;
+    background-color: #0f0606;
+}
+.li-para{
+    margin-left: 20px;
+    font-size: 22px;
+    margin-top: 5px;
+    margin-bottom: 5px;
+}
+.settings-li{
+    list-style-type: none;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.sub-li{
+    display: flex;
+    align-items: center;
+}

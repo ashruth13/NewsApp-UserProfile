@@ -1,0 +1,18 @@
+.footer-avatar{
+    height: 50px;
+    margin: 5px;
+}
+.dark-border-top{
+    border-style: solid;
+    border-radius: 0.1px;
+    border-color: #0f0606;
+    border-left : none;
+    border-right : none;
+    border-bottom : none;
+}
+.footer-main{
+    height: 8vh;;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}

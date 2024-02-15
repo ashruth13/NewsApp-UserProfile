@@ -1,0 +1,31 @@
+.header-main{
+    padding-left: 10px;
+    width : 100%;
+    height: 8vh;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+.dark{
+    background-color: #0f0606;
+}
+.dark-border{
+    border-style: solid;
+    border-radius: 0.1px;
+    border-color: #0f0606;
+    border-left : none;
+    border-right : none;
+    border-top : none;
+}
+.header-image{
+height: 6vh;
+padding: 5px;
+}
+
+.no-style-button{
+    padding-right: 20px;
+   background : transparent;
+   outline : none;
+   border : none;
+   cursor: pointer;    
+}
