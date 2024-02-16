@@ -14,13 +14,16 @@ class Pheader extends Component{
                     return(
                     <nav className={`header-main ${dark ? "dark" : "dark-border"}`}>
                     <Link to="/">
-                        <img className="header-image" src="https://res.cloudinary.com/dgw2vopar/image/upload/f_auto,q_auto/ssevs5wenm0q3bxublpc"/>
+                        {/* Clicking upon logo  will take you back to home page*/}
+                        <img alt="logo" className="header-image" src="https://res.cloudinary.com/dgw2vopar/image/upload/f_auto,q_auto/ssevs5wenm0q3bxublpc"/>
                     </Link>
                     <div>
                         <button className="no-style-button" type="button"  onClick = {() => changeTheme()}>
+                            {/* Toggle between dar and light Mode */}
                             {dark ? <MdLightMode size={30} color="white"/> : <MdDarkMode size={30} />}
                         </button>
                         <Link to="/settings">
+                            {/* This will navigate you to Settings page */}
                             <button className='no-style-button'>
                                 {dark ? <IoMdSettings size={30} color="white"/> : <IoMdSettings size={30}/>}
                             </button>
@@ -29,9 +32,6 @@ class Pheader extends Component{
                 </nav>)
                 }}
             </NewsProfile.Consumer>
-
-
-            
         )
     }
 }

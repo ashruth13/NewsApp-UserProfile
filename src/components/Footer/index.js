@@ -12,18 +12,20 @@ class Footer extends  Component {
                     const {dark} = value
                     return (<div className={`footer-main ${dark ? "dark" : "dark-border-top" }`}>
                         <Link to="/">
-                        <button className="no-style-button">{dark ? <MdHome size={50} color="white"/> : <MdOutlineHome size={50} color="black"/> }
-                        </button>
+                            {/* Takes you to home page */}
+                            <button className="no-style-button">
+                                {dark ? <MdHome size={50} color="white"/> : <MdOutlineHome size={50} color="black"/> }
+                            </button>
                         </Link>
                         <Link to="/profile">
-                        <button className="no-style-button">
-                            <img className="footer-avatar" src="https://res.cloudinary.com/dgw2vopar/image/upload/f_auto,q_auto/ynd9czngp4p3rqe8vq7x" />
-                        </button>
+                            {/* Takes you to profile page */}
+                            <button className="no-style-button">
+                                <img className="footer-avatar" alt="user" src="https://res.cloudinary.com/dgw2vopar/image/upload/f_auto,q_auto/ynd9czngp4p3rqe8vq7x" />
+                            </button>
                         </Link>
                     </div>)
                 }}
             </NewsProfile.Consumer>
-        
         )
     }
 }

@@ -1,5 +1,4 @@
 import {Component} from 'react'
-
 import Profile from './components/Profile'
 import {BrowserRouter , Routes, Route} from 'react-router-dom'
 import NewsProfile from './context/NewsProfile'
@@ -7,7 +6,6 @@ import {v4 as uuid} from 'uuid'
 import './App.css'
 import Home from './components/Home'
 import Settings from './components/Settings'
-import {toast} from 'react-toastify'
 import 'react-toastify/dist/ReactToastify.css';
 
 class App extends  Component {
@@ -39,34 +37,32 @@ class App extends  Component {
       liked : false,
       saved : true,
       }]
+      
+    //one Demo news data for liked and saved is given here
   }
 
   changeTheme = () => {
+    // to change theme
     this.setState(prevState => ({dark : !prevState.dark}))
   }
 
+
+
   updateLiked = (value) => {
-    // toast("Hello Geeks 6", {
-    //   position: toast.POSITION.BOTTOM_RIGHT,
-    // });
-    const {likedData} = this.state
+    // to append liked data by user to likedData list
     const newArticle = {...value , liked : true}
     this.setState(prevState => ({likedData : [...prevState.likedData,newArticle]}))
   }
 
   addToSaved = (value) => {
-    const {savedData} = this.state
+    // to append saved data by user to savedData list
     const  newArticle = {...value , saved : true}
     this.setState(prevState => ({savedData : [...prevState.savedData,newArticle]}))
   }
 
-  updateData = (value) => {
-    console.log("value",value)
-  }
-
 
   render(){
-    const {dark,likedData,savedData,wholeData} = this.state
+    const {dark,likedData,savedData} = this.state
     return (
       <NewsProfile.Provider value={{
         dark:dark, 
@@ -75,16 +71,14 @@ class App extends  Component {
         updateLiked : this.updateLiked,
         savedData:savedData,
         addToSaved : this.addToSaved,
-        wholeData: [],
-        updateData : this.updateData,
       }}>
-
         <BrowserRouter>
-        <Routes>
-        <Route path="/" element={<Home/>} exact />
-        <Route path="/profile" element={<Profile/>} exact />
-        <Route path="/settings" element={<Settings/>} exact />
-        </Routes>
+          <Routes> 
+            {/* Using BrowserRouter and Route from react-router-dom to handle routing */}
+            <Route path="/" element={<Home/>} exact />
+            <Route path="/profile" element={<Profile/>} exact />
+            <Route path="/settings" element={<Settings/>} exact />
+          </Routes>
         </BrowserRouter>
       </NewsProfile.Provider >
     )

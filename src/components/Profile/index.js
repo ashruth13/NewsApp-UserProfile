@@ -37,9 +37,11 @@ class Profile extends Component{
               },
             method : 'GET',
         }
+        // News API call
         const response = await fetch(url,options)
         if (response.ok){
             const data = await response.json()
+            // id, liked : false and saved : false are added to the data fetched from NEWSAPI
             const newData = data.articles.map(each => ({
                 id : uuid(),
                 author : each.author,
@@ -62,20 +64,24 @@ class Profile extends Component{
     }
 
     userDetails = {
+        // Demo user details
         name: "John Joseph",
         shortBio : "Navigating the news landscape with a curiosity for diverse stories and a passion for unbiased information. 📰✨ #NewsExplorer #InformedCitizen",
         avatarUrl : "https://res.cloudinary.com/dgw2vopar/image/upload/f_auto,q_auto/ynd9czngp4p3rqe8vq7x"
     }
 
     posts = () => {
+        // To change activeTab to Posts so that they can be viewed upon clicking tha icon
         this.setState({activeTab:'POSTS'})
     }
 
     liked = () => {
+        // To change activeTab to Liked so that they can be viewed upon clicking tha icon
         this.setState({activeTab:'LIKED'})
     }
 
     saved = () => {
+        // To change activeTab to Saved so that they can be viewed upon clicking tha icon
         this.setState({activeTab:'SAVED'})
     }
 
@@ -87,6 +93,7 @@ class Profile extends Component{
                     const {activeTab} = this.state
                     const {dark,savedData,likedData} = value
                     const renderSaved = () => {
+                        // User Bookmarked/ saved posts
                         return (
                             <div className='post-main'>
                                 <p className='post-head'>Saved Posts</p> 
@@ -101,6 +108,7 @@ class Profile extends Component{
                         )
                     }
                     const renderLiked = () => {
+                        // Liked Post view section
                         return (
                             <div className='post-main'>
                                 <p className='post-head'>Liked Posts</p> 
@@ -115,8 +123,8 @@ class Profile extends Component{
                         )
                     }
 
-
                     const renderPosts = () => {
+                        // Posts posted by User
                         const {data} = this.state
                         return (
                             <div className='post-main'>
@@ -131,12 +139,17 @@ class Profile extends Component{
                             </div>
                         )
                     }
+
+                    
+                    // To show Loader to user  while fetching the data
                     const renderLoader = () => (
                         <div className={`loader ${dark ? "loader-dark" : ""}`}>
-                        <ColorRing color="#621708"/>
+                            <ColorRing color="#621708"/>
                         </div>
                     )
+
                     const renderData = () => {
+                        //  To move between Tabs 
                         switch (activeTab) {
                             case 'POSTS':
                                 return renderPosts()
@@ -148,61 +161,74 @@ class Profile extends Component{
                                 return ""
                         }
                     }
-                    const renderFailure = () => {}
-                    const renderSuccess = () => (
-                        <div className={`profile-main ${dark ? "success-dark" : ''}`}>
-                    <div className="profile-user">
-                        <img className='profile-image' src={this.userDetails.avatarUrl} />
-                        <div className="profile-details">
-                        <p className='profile-name'>{this.userDetails.name}</p>
-                        <p className='profile-bio'>{this.userDetails.shortBio}</p>
+
+                    const handleClickRetry = () => {
+                        //  To try again to fetch News when failed 
+                        this.getNews()
+                    }
+
+                    const renderFailure = () => {
+                        <div className={`loader ${dark ? "loader-dark" : ""}`}>
+                            <h1>Failed</h1>
+                            <p>Please try again</p>
+                            <button className="no-style-button" onClick={handleClickRetry}>Try Again</button>
                         </div>
-                    </div>
-                    <hr/>
-                    <div className='icons'>
-                        <button onClick={this.posts} className={`no-profile-button ${dark && activeTab==='POSTS' ? "border-white" : ''} ${activeTab==="POSTS" ? 'active' : ''}`}>
-                        <MdOutlinePostAdd size={35} color={`${dark ? "white" : ''}`}/>
-                        </button>
-                        <button onClick={this.liked} className={`no-profile-button ${dark && activeTab==='LIKED' ? "border-white" : 'ko'} ${activeTab==="LIKED" ? 'active' : ''}`}>
-                        <AiOutlineLike size={35} color={`${dark ? "white" : ''}`}/>
-                        </button>
-                        <button onClick={this.saved} className={`no-profile-button ${dark && activeTab==='SAVED' ? "border-white" : 'ko'} ${activeTab==="SAVED" ? 'active' : ''}`}>
-                        <IoBookmarkOutline size={35} color={`${dark ? "white" : ''}`}/>
-                        </button>
-                    </div>
-                    <div>
-                        {renderData()}
-                    </div>
-                </div>
-                
+                    }
+
+                    const renderSuccess = () => (
+                        // Upon successfully fetching the data
+                        <div className={`profile-main ${dark ? "success-dark" : ''}`}>
+                            <div className="profile-user">
+                                <img className='profile-image' alt="user-profile" src={this.userDetails.avatarUrl} />
+                                <div className="profile-details">
+                                    <p className='profile-name'>{this.userDetails.name}</p>
+                                    <p className='profile-bio'>{this.userDetails.shortBio}</p>
+                                </div>
+                            </div>
+                            <hr/>
+                            <div className='icons'>
+                                <button onClick={this.posts} className={`no-profile-button ${dark && activeTab==='POSTS' ? "border-white" : ''} ${activeTab==="POSTS" ? 'active' : ''}`}>
+                                    <MdOutlinePostAdd size={35} color={`${dark ? "white" : ''}`}/>
+                                </button>
+                                <button onClick={this.liked} className={`no-profile-button ${dark && activeTab==='LIKED' ? "border-white" : 'ko'} ${activeTab==="LIKED" ? 'active' : ''}`}>
+                                    <AiOutlineLike size={35} color={`${dark ? "white" : ''}`}/>
+                                </button>
+                                <button onClick={this.saved} className={`no-profile-button ${dark && activeTab==='SAVED' ? "border-white" : 'ko'} ${activeTab==="SAVED" ? 'active' : ''}`}>
+                                    <IoBookmarkOutline size={35} color={`${dark ? "white" : ''}`}/>
+                                </button>
+                            </div>
+                            <div>
+                                {renderData()}
+                            </div>
+                        </div>
                     )
+
                     const renderDecide = () => {
+                        // To display Loader, Failed and Success view depending on fetching
                         const {status} = this.state
-                    switch (status) {
-                        case apiConst.loading:
-                            return renderLoader()
-                        case apiConst.success:
-                            return renderSuccess()
-                        case apiConst.failure:
-                            return renderFailure()
-                        default:
-                            return ''
+                        switch (status) {
+                            case apiConst.loading:
+                                return renderLoader()
+                            case apiConst.success:
+                                return renderSuccess()
+                            case apiConst.failure:
+                                return renderFailure()
+                            default:
+                                return ''
+                        }
                     }
-                    }
+
                     return (
                         <div>
-                <Pheader/>
-                <div>
-                    {renderDecide()}
-                </div>
-                <Footer />
-            </div>
+                            <Pheader/>
+                            <div>
+                                {renderDecide()}
+                            </div>
+                            <Footer />
+                        </div>
                     )
                 }}
             </NewsProfile.Consumer>
-
-
-            
         )
     }
 }

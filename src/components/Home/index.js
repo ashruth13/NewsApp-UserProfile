@@ -3,7 +3,6 @@ import './index.css'
 import Header from "../Header";
 import Footer from '../Footer';
 import Card from '../Card'
-import { Link } from "react-router-dom";
 import {ColorRing} from 'react-loader-spinner'
 import NewsProfile from "../../context/NewsProfile";
 import {v4 as uuid} from 'uuid'
@@ -34,11 +33,12 @@ class Home extends  Component {
               },
             method : 'GET',
         }
+        // Real time news data is fetched using News API
         const response = await fetch(url,options)
         if (response.ok){
             const data = await response.json()
             const newData = data.articles.map(each => ({
-                id : uuid(),
+                id : uuid(), // uuid is used to identify each 
                 author : each.author,
                 content : each.content,
                 description : each.description,
@@ -65,24 +65,13 @@ class Home extends  Component {
         return <NewsProfile.Consumer>
             {value => {
                 const {data} = this.state
-                const {dark,updateLiked,addToSaved,updateData} = value
+                const {dark} = value
                 const renderLoader = () => (
+                    // Loader code
                     <div className={`loader ${dark ? "loader-dark" : ""}`}>
-                    <ColorRing color="#621708"/>
+                        <ColorRing color="#621708"/>
                     </div>
                 )
-                updateData(data)
-                // const like = (value) => {
-                //     const data = JSON.parse(localStorage.getItem("wholeData"))
-                //     const newData = data.map(each => {
-                //         if (each.id===value){
-                //             return {...each,liked :true}
-                //         }
-                //         return each
-                //     })
-                //     console.log(newData)
-                //     localStorage.setItem("wholeData" , JSON.stringify(newData))
-                // }
                 const decide = () => {
                     const {status} = this.state
                     switch (status) {
@@ -96,8 +85,20 @@ class Home extends  Component {
                             return ''
                     }
                 }
-                const renderFailure = () => {}
+                const handleClickRetry = () => {
+                    // To try again fetching  data from API
+                    this.getDetails()
+                }
+                const renderFailure = () => {
+                    // Failure View
+                    <div className={`loader ${dark ? "loader-dark" : ""}`}>
+                        <h1>Failed</h1>
+                        <p>Please try again</p>
+                        <button className="no-style-button" onClick={handleClickRetry}>Try Again</button>
+                    </div>
+                }
                 const renderSuccess = () => {
+                    // Main home view using Card component
                     return (
                     <div className={`success ${dark ? 'success-dark' : ''}`}>
                         <h1 className="success-heading">Top headlines</h1>

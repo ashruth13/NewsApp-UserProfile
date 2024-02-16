@@ -79,10 +79,13 @@
     }
     .profile-success{
         overflow-y: scroll;
-        height: 60vh;
+        height: 58vh;
     }
     .success-imgs{
         height: 200px;
         width : 43vw;
+    }
+    .post-head{
+        font-size: 30px;
     }
 }

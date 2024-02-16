@@ -1,10 +1,9 @@
 import React from 'react'
-import {v4 as uuid} from 'uuid'
+
+// All functions and data that are shared between all pages are used here
 
 const NewsProfile = React.createContext({
     dark : false,
-    wholeData: [],
-    updateData : () => {},
     changeTheme : () => {},
     likedData : [],
     updateLiked : () => {},

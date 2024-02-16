@@ -10,6 +10,7 @@ import NewsProfiles from '../../context/NewsProfile';
 
 class Settings extends Component{
     render(){
+        // Demo settings options are displayed
         return (
             <NewsProfiles.Consumer>
                 {value => {
@@ -27,7 +28,6 @@ class Settings extends Component{
                                 </div>
                                 <FaAngleRight size={30}/>
                                 </li>
-        
                                 <hr />
                                 <li className='settings-li'>
                                     <div className='sub-li'>
@@ -75,8 +75,6 @@ class Settings extends Component{
                     </div>)
                 }}
             </NewsProfiles.Consumer>
-
-            
         )
     }
 }
