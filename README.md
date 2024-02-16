@@ -1,5 +1,7 @@
 ## NewsApp-UserProfile
 
+### This responsive web application can route between Home page, Profile Page and Settings Page. And Contain News Cards which can be saved and Liked (Viewed in Profile Section). Contains some demo settings in Settings Section.
+
 Steps to run 
 
 Step-1 : Use npm install
