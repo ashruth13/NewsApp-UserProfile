@@ -18,6 +18,7 @@ class Card extends Component{
                     return (
                         <>
                         <li className={`li bg${Math.floor(Math.random() * 10)}`}>
+                            {/* Random background color is assigned to each list item*/}
                             <img src={info.urlToImage} className="success-img" alt="thumbnail"/>
                             <p className="success-head">{info.title}</p>
                             {/* Upon Clicking more you will be navigated to the original news page */}
